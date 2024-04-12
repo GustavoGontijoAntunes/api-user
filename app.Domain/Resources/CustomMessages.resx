@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Authenticated" xml:space="preserve">
+    <value>Usuário autenticado.</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Criação</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Deleção</value>
+  </data>
+  <data name="DescriptionIsRequiredToCreatePermission" xml:space="preserve">
+    <value>Para criar/editar um usuário, é obrigatório informar a descrição.</value>
+  </data>
+  <data name="IncorrectPassword" xml:space="preserve">
+    <value>A senha informada está incorreta.</value>
+  </data>
+  <data name="LoginIsRequiredToCreateUser" xml:space="preserve">
+    <value>Para criar/editar um usuário, é obrigatório informar o login.</value>
+  </data>
+  <data name="LoginIsRequiredToLogin" xml:space="preserve">
+    <value>Para efetuar o login na aplicação, é necessário informar o login do usuário.</value>
+  </data>
+  <data name="NameIsRequiredToCreatePermission" xml:space="preserve">
+    <value>Para criar/editar uma permissão, é obrigatório informar o nome.</value>
+  </data>
+  <data name="NameIsRequiredToCreatePermissionExcel" xml:space="preserve">
+    <value>Linha {0}: Para criar um permissão,  é obrigatório informar o nome.</value>
+  </data>
+  <data name="NameIsRequiredToCreateProfile" xml:space="preserve">
+    <value>Para criar/editar um perfil, é obrigatório informar o nome.</value>
+  </data>
+  <data name="NameIsRequiredToCreateUser" xml:space="preserve">
+    <value>Para criar/editar um usuário, é obrigatório informar o nome.</value>
+  </data>
+  <data name="NewPasswordIsRequiredToChangeUserPassword" xml:space="preserve">
+    <value>Para alterar a senha do usuário, é obrigatório informar a nova senha.</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Nenhum</value>
+  </data>
+  <data name="NotAuthenticated" xml:space="preserve">
+    <value>Erro de autenticação. Login ou senha inválidos.</value>
+  </data>
+  <data name="OldPasswordIsRequiredToChangeUserPassword" xml:space="preserve">
+    <value>Para alterar a senha do usuário, é obrigatório informar a antiga senha.</value>
+  </data>
+  <data name="PasswordIsRequiredToCreateUser" xml:space="preserve">
+    <value>Para criar/editar um usuário, é obrigatório informar a senha.</value>
+  </data>
+  <data name="PasswordIsRequiredToLogin" xml:space="preserve">
+    <value>Para efetuar o login na aplicação, é necessário informar a senha do usuário.</value>
+  </data>
+  <data name="PermissionAlreadyExists" xml:space="preserve">
+    <value>O nome {0} já é utilizado por uma permissão do sistema.</value>
+  </data>
+  <data name="PermissionDescriptionMaxLength" xml:space="preserve">
+    <value>O tamanho máximo da descrição da permissão é 200.</value>
+  </data>
+  <data name="PermissionDescriptionMaxLengthExcel" xml:space="preserve">
+    <value>Linha {0}: O tamanho máximo da descrição da permissão é 200.</value>
+  </data>
+  <data name="PermissionIdNotExists" xml:space="preserve">
+    <value>Esta permissão não existe no sistema.</value>
+  </data>
+  <data name="PermissionNameMaxLength" xml:space="preserve">
+    <value>O tamanho máximo do nome da permissão é 50.</value>
+  </data>
+  <data name="PermissionNameMaxLengthExcel" xml:space="preserve">
+    <value>Linha {0}: O tamanho máximo do nome da permissão é 50.</value>
+  </data>
+  <data name="ProfileAlreadyExists" xml:space="preserve">
+    <value>O nome {0} já é utilizado por um perfil do sistema.</value>
+  </data>
+  <data name="ProfileCantBeDeleted" xml:space="preserve">
+    <value>Este perfil não pode ser deletado, pois é utilizado por um usuário.</value>
+  </data>
+  <data name="ProfileIdNotExists" xml:space="preserve">
+    <value>Este perfil não existe no sistema.</value>
+  </data>
+  <data name="ProfileIsRequiredToCreateUser" xml:space="preserve">
+    <value>Para criar/editar um usuário, é obrigatório informar o perfil.</value>
+  </data>
+  <data name="ProfileNameMaxLength" xml:space="preserve">
+    <value>O tamanho máximo do nome do perfil é 50.</value>
+  </data>
+  <data name="SheetNameExcelPermission" xml:space="preserve">
+    <value>Planilha de Permissões</value>
+  </data>
+  <data name="SheetNameImportExcelPermission" xml:space="preserve">
+    <value>Planilha de Importação de Permissões</value>
+  </data>
+  <data name="StringNotAllowed" xml:space="preserve">
+    <value>Não é permitido a inserção de caracteres do tipo texto na coluna {0} da linha {1}</value>
+  </data>
+  <data name="TitleExcelImportPermission" xml:space="preserve">
+    <value>Planilha de Importação de Permissões</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Alteração</value>
+  </data>
+  <data name="UserAlreadyExists" xml:space="preserve">
+    <value>O login {0} já é utilizado por um usuário do sistema.</value>
+  </data>
+  <data name="UserIdNotExists" xml:space="preserve">
+    <value>Este usuário não existe no sistema.</value>
+  </data>
+  <data name="UserLoginMaxLength" xml:space="preserve">
+    <value>O tamanho máximo do login do usuário é 20.</value>
+  </data>
+  <data name="UserNameMaxLength" xml:space="preserve">
+    <value>O tamanho máximo do nome do usuário é 100.</value>
+  </data>
+  <data name="UserNotExists" xml:space="preserve">
+    <value>O usuário {0} não existe no sistema.</value>
+  </data>
+</root>

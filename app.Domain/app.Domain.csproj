@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.9.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="8.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.4.0" />
+    <PackageReference Include="MimeTypeMapOfficial" Version="1.0.17" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\CustomMessages.en-US.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CustomMessages.en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CustomMessages.es-AR.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CustomMessages.es-AR.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CustomMessages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CustomMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CustomTables.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CustomTables.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\CustomMessages.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CustomMessages.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CustomMessages.es-AR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CustomMessages.es-AR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CustomMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CustomMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CustomTables.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CustomTables.es-AR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CustomTables.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CustomTables.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

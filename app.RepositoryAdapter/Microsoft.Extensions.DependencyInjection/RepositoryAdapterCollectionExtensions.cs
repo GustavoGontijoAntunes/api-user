@@ -35,7 +35,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 }
             });
 
-            services.AddScoped<IAuditRepository, AuditRepository>();
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IProfileRepository, ProfileRepository>();
             services.AddScoped<IUserRepository, UserRepository>();

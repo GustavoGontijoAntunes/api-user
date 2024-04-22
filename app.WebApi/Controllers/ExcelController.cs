@@ -60,9 +60,9 @@ namespace app.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Authorize(Roles = "POST_PERMISSION")]
-        public IActionResult UploadPermission(IFormFile file)
+        public async Task<IActionResult> UploadPermission(IFormFile file)
         {
-            _permissionService.RegisterByExcel(file, User.Identity.Name);
+            await _permissionService.RegisterByExcel(file);
 
             return Ok();
         }

@@ -9,8 +9,8 @@ namespace app.Domain.Services
         PagedList<Profile> GetAll(ProfileSearch search);
         Profile GetByName(string name);
         Profile GetById(long id);
-        void Add(Profile profile, string userName);
-        void Update(Profile profile, string userName);
-        void DeleteById(long id, string userName);
+        Task Add(Profile profile);
+        Task Update(Profile profile);
+        void DeleteById(long id);
     }
 }

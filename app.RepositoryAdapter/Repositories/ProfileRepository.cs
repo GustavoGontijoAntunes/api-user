@@ -49,6 +49,7 @@ namespace app.RepositoryAdapter.Repositories
         {
             var profile = Repository.AsNoTracking().AsQueryable().FirstOrDefault(x => x.Id == id);
             Repository.Remove(profile);
+            SaveChanges();
         }
 
         public bool IsUsedInSomeUser(long id)

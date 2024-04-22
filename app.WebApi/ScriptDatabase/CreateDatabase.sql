@@ -2,20 +2,6 @@
 CREATE SCHEMA `db-app`;
 USE `db-app`;
 
-DROP TABLE IF EXISTS `audit`;
-CREATE TABLE `audit` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `dateTime` datetime NOT NULL,
-  `type` int NOT NULL,
-  `user` varchar(20) NOT NULL,
-  `tableName` varchar(50) NULL,
-  `keyValues` varchar(50) NULL,
-  `oldValues` varchar(5000) NULL,
-  `newValues` varchar(5000) NULL,
-  `changedColumns` varchar(1000) NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-
 DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `id` int NOT NULL AUTO_INCREMENT,

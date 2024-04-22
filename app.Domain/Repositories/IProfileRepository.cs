@@ -1,7 +1,6 @@
 ﻿using app.Domain.Extensions;
-using app.Domain.Models.Filters;
 using app.Domain.Models;
-using app.Domain.Models.Authentication;
+using app.Domain.Models.Filters;
 
 namespace app.Domain.Repositories
 {

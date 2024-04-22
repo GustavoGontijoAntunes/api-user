@@ -29,10 +29,10 @@ namespace app.WebApi.Controllers
         [ProducesResponseType(typeof(BadRequestResult), 400)]
         [ProducesResponseType(500)]
         [Authorize(Roles = "POST_PROFILE")]
-        public IActionResult Post([FromBody] ProfilePost profilePost)
+        public async Task<IActionResult> Post([FromBody] ProfilePost profilePost)
         {
             var profile = _mapper.Map<Profile>(profilePost);
-            _profileService.Add(profile, User.Identity.Name);
+            await _profileService.Add(profile);
 
             return Ok();
         }
@@ -46,10 +46,10 @@ namespace app.WebApi.Controllers
         [ProducesResponseType(typeof(BadRequestResult), 400)]
         [ProducesResponseType(500)]
         [Authorize(Roles = "PUT_PROFILE")]
-        public IActionResult Edit([FromBody] ProfilePost profilePost)
+        public async Task<IActionResult> Edit([FromBody] ProfilePost profilePost)
         {
             var profile = _mapper.Map<Profile>(profilePost);
-            _profileService.Update(profile, User.Identity.Name);
+            await _profileService.Update(profile);
 
             return Ok();
         }
@@ -101,7 +101,7 @@ namespace app.WebApi.Controllers
         [Authorize(Roles = "DELETE_PROFILE")]
         public IActionResult DeleteById([FromQuery] long id)
         {
-            _profileService.DeleteById(id, User.Identity.Name);
+            _profileService.DeleteById(id);
 
             return Ok();
         }

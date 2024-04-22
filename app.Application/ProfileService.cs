@@ -33,7 +33,7 @@ namespace app.Application
             return _profileRepository.GetById(id);
         }
 
-        public void Add(Profile profile, string userName)
+        public async Task Add(Profile profile)
         {
             profile.ThrowIfNotValid();
             var profileAlreadyExsists = GetByName(profile.Name);
@@ -43,11 +43,10 @@ namespace app.Application
                 throw new DomainException(string.Format(CustomMessages.ProfileAlreadyExists, profile.Name));
             }
 
-            _profileRepository.Add(profile);
-            SaveChanges(userName);
+            await _profileRepository.Add(profile);
         }
 
-        public void Update(Profile profile, string userName)
+        public async Task Update(Profile profile)
         {
             profile.ThrowIfNotValid();
             var existingProfile = GetById(profile.Id);
@@ -63,11 +62,10 @@ namespace app.Application
                 throw new DomainException(CustomMessages.ProfileIdNotExists);
             }
 
-            _profileRepository.Update(profile);
-            SaveChanges(userName);
+            await _profileRepository.Update(profile);
         }
 
-        public void DeleteById(long id, string userName)
+        public void DeleteById(long id)
         {
             var profile = GetById(id);
             var isAlreadyUsed = IsUsedInSomeUser(id);
@@ -83,12 +81,6 @@ namespace app.Application
             }
 
             _profileRepository.DeleteById(id);
-            SaveChanges(userName);
-        }
-
-        private void SaveChanges(string userName)
-        {
-            _profileRepository.SaveChanges(userName);
         }
 
         private bool IsUsedInSomeUser(long id)

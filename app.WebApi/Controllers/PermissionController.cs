@@ -28,10 +28,10 @@ namespace app.WebApi.Controllers
         [ProducesResponseType(typeof(BadRequestResult), 400)]
         [ProducesResponseType(500)]
         [Authorize(Roles = "POST_PERMISSION")]
-        public IActionResult Post([FromBody] PermissionPost permissionPost)
+        public async Task<IActionResult> Post([FromBody] PermissionPost permissionPost)
         {
             var permission = _mapper.Map<Permission>(permissionPost);
-            _permissionService.Add(permission, User.Identity.Name);
+            await _permissionService.Add(permission);
 
             return Ok();
         }
@@ -45,10 +45,10 @@ namespace app.WebApi.Controllers
         [ProducesResponseType(typeof(BadRequestResult), 400)]
         [ProducesResponseType(500)]
         [Authorize(Roles = "PUT_PERMISSION")]
-        public IActionResult Edit([FromBody] PermissionPost permissionPost)
+        public async Task<IActionResult> Edit([FromBody] PermissionPost permissionPost)
         {
             var permission = _mapper.Map<Permission>(permissionPost);
-            _permissionService.Update(permission, User.Identity.Name);
+            await _permissionService.Update(permission);
 
             return Ok();
         }
@@ -99,7 +99,7 @@ namespace app.WebApi.Controllers
         [Authorize(Roles = "DELETE_PERMISSION")]
         public IActionResult DeleteById([FromQuery] long id)
         {
-            _permissionService.DeleteById(id, User.Identity.Name);
+            _permissionService.DeleteById(id);
 
             return Ok();
         }

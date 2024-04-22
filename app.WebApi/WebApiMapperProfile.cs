@@ -1,6 +1,5 @@
 ﻿using app.Domain.Extensions;
 using app.Domain.Models;
-using app.Domain.Models.Audit;
 using app.Domain.Models.Authentication;
 using app.Domain.Models.File;
 using app.Domain.Models.Filters;
@@ -12,13 +11,7 @@ namespace app.WebApi
     public class WebApiMapperProfile : AutoMapper.Profile
     {
         public WebApiMapperProfile()
-        {
-            #region Audit
-            CreateMap<AuditGet, AuditSearch>();
-            CreateMap<Audit, AuditResult>();
-            CreateMap<PagedList<Audit>, CollectionResult<AuditResult>>();
-            #endregion
-
+        {        
             #region File Upload
             CreateMap<FileUpload, FileUploadPost>();
             CreateMap<FileDownload, FileDownloadResponse>();

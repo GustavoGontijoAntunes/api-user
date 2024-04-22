@@ -6,13 +6,13 @@ namespace app.Domain.Services
 {
     public interface IUserService
     {
-        UserAuthenticated Login(User user, string userName);
+        Task<UserAuthenticated> Login(User user);
         PagedList<User> GetAll(UserSearch search);
         User GetByLogin(string login);
         User GetById(long id);
-        void Add(User user, string userName);
-        void Update(User user, string userName);
-        void ChangePassword(User user, string userName);
-        void DeleteById(long id, string userName);
+        Task Add(User user);
+        Task Update(User user);
+        Task ChangePassword(User user);
+        void DeleteById(long id);
     }
 }

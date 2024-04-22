@@ -6,6 +6,7 @@ using app.WebApi.Extension;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Localization;
@@ -75,21 +76,21 @@ namespace app.WebApi
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                //
             }
-            app.UseApiConfiguration();
-            app.UseHttpsRedirection();
-            app.UseAuthentication();
-            app.UseAuthorization();
-            app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            Configure(app, builder.Services.BuildServiceProvider().GetService<IApiVersionDescriptionProvider>());
 
             app.Run();
+        }
+
+        public static void Configure(IApplicationBuilder app,
+                          IApiVersionDescriptionProvider provider)
+        {
+            app.UseApiConfiguration();
+            app.UseAuthentication();
+            app.UseAuthorization();
+            app.UseSwaggerConfiguration(provider);
         }
     }
 }

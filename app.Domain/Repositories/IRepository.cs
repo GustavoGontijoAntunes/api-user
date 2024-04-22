@@ -2,9 +2,9 @@
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        bool SaveChanges(string? userId = null);
-        Task<bool> SaveChangesAsync(string? userId = null);
-        void Add(TEntity entity);
-        void Update(TEntity entity);
+        bool SaveChanges();
+        Task<bool> SaveChangesAsync();
+        Task Add(TEntity entity);
+        Task Update(TEntity entity);
     }
 }

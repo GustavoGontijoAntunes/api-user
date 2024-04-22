@@ -26,7 +26,7 @@ namespace app.Application
             _profileRepository = profileRepository;
         }
 
-        public UserAuthenticated Login(User user, string userName)
+        public async Task<UserAuthenticated> Login(User user)
         {
             try
             {
@@ -57,8 +57,7 @@ namespace app.Application
                 var tokenAplication = GenerateToken(userAux);
                 userAux.Profile = null; // Tracking error because of circular dependency caused by GenerateToken method
 
-                _userRepository.Update(userAux);
-                SaveChanges(userName);
+                await _userRepository.Update(userAux);
 
                 return new UserAuthenticated()
                 {
@@ -93,7 +92,7 @@ namespace app.Application
             return _userRepository.GetById(id);
         }
 
-        public void Add(User user, string userName)
+        public async Task Add(User user)
         {
             user.ThrowIfNotValid();
             var userAlreadyExsists = GetByLogin(user.Login);
@@ -110,11 +109,10 @@ namespace app.Application
                 throw new DomainException(CustomMessages.ProfileIdNotExists);
             }
 
-            _userRepository.Add(user);
-            SaveChanges(userName);
+            await _userRepository.Add(user);
         }
 
-        public void Update(User user, string userName)
+        public async Task Update(User user)
         {
             user.ThrowIfNotValid();
             var existingUser = GetById(user.Id);
@@ -138,11 +136,10 @@ namespace app.Application
 
             user.Password = existingUser.Password;
 
-            _userRepository.Update(user);
-            SaveChanges(userName);
+            await _userRepository.Update(user);
         }
 
-        public void ChangePassword(User user, string userName)
+        public async Task ChangePassword(User user)
         {
             var userExisting = GetById(user.Id);
 
@@ -159,11 +156,10 @@ namespace app.Application
             userExisting.Profile = null; // Tracking error because of circular dependency caused by GetById method
             userExisting.Password = HashPassword(user.NewPassword);
 
-            _userRepository.Update(userExisting);
-            SaveChanges(userName);
+            await _userRepository.Update(userExisting);
         }
 
-        public void DeleteById(long id, string userName)
+        public void DeleteById(long id)
         {
             var user = GetById(id);
 
@@ -173,7 +169,6 @@ namespace app.Application
             }
 
             _userRepository.DeleteById(id);
-            SaveChanges(userName);
         }
 
         private static string HashPassword(string password)
@@ -184,11 +179,6 @@ namespace app.Application
         private static bool VerifyPassword(string password, string hashedPassword)
         {
             return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
-        }
-
-        private void SaveChanges(string userName)
-        {
-            _userRepository.SaveChanges(userName);
         }
 
         private string GenerateToken(User user)

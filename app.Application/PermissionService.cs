@@ -36,7 +36,7 @@ namespace app.Application
             return _permissionRepository.GetById(id);
         }
 
-        public void Add(Permission permission, string userName)
+        public async Task Add(Permission permission)
         {
             permission.ThrowIfNotValid();
             var permissionAlreadyExsists = GetByName(permission.Name);
@@ -46,11 +46,10 @@ namespace app.Application
                 throw new DomainException(string.Format(CustomMessages.PermissionAlreadyExists, permission.Name));
             }
 
-            _permissionRepository.Add(permission);
-            SaveChanges(userName);
+            await _permissionRepository.Add(permission);
         }
 
-        public void Update(Permission permission, string userName)
+        public async Task Update(Permission permission)
         {
             permission.ThrowIfNotValid();
             var existingPermission = GetById(permission.Id);
@@ -66,11 +65,10 @@ namespace app.Application
                 throw new DomainException(CustomMessages.PermissionIdNotExists);
             }
 
-            _permissionRepository.Update(permission);
-            SaveChanges(userName);
+            await _permissionRepository.Update(permission);
         }
 
-        public void AddOrUpdateRange(List<Permission> permissions, string userName)
+        public async Task AddOrUpdateRange(List<Permission> permissions)
         {
             foreach (var item in permissions)
             {
@@ -83,11 +81,10 @@ namespace app.Application
                 }
             }
 
-            _permissionRepository.AddOrUpdateRange(permissions);
-            SaveChanges(userName);
+            await _permissionRepository.AddOrUpdateRange(permissions);
         }
 
-        public void DeleteById(long id, string userName)
+        public void DeleteById(long id)
         {
             var permission = GetById(id);
 
@@ -97,7 +94,6 @@ namespace app.Application
             }
 
             _permissionRepository.DeleteById(id);
-            SaveChanges(userName);
         }
 
         public List<Permission> GetPermissionsByProfileId(long profileId)
@@ -118,18 +114,12 @@ namespace app.Application
             return _excelAdapter.GetPermissionModel();
         }
 
-        public void RegisterByExcel(IFormFile file, string userName)
+        public async Task RegisterByExcel(IFormFile file)
         {
             var permissions = _excelAdapter.ReadPermission(file);
             permissions.ThrowIfNullOrEmpty();
 
-            _permissionRepository.AddOrUpdateRange(permissions);
-            SaveChanges(userName);
-        }
-
-        private void SaveChanges(string userName)
-        {
-            _permissionRepository.SaveChanges(userName);
+            await _permissionRepository.AddOrUpdateRange(permissions);
         }
     }
 }

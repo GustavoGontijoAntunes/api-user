@@ -26,11 +26,11 @@ namespace app.WebApi.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(BadRequestResult), 400)]
         [ProducesResponseType(500)]
-        public ActionResult<UserAuthenticatedResponse> Login([FromBody] UserLogin userLogin)
+        public async Task<ActionResult<UserAuthenticatedResponse>> Login([FromBody] UserLogin userLogin)
         {
             userLogin.ThrowIfNotValid();
             var user = _mapper.Map<User>(userLogin);
-            var result = _userService.Login(user, User.Identity.Name);
+            var result = await _userService.Login(user);
 
             if (result == null || !result.Authenticated)
             {

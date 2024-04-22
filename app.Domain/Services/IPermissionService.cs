@@ -9,13 +9,13 @@ namespace app.Domain.Services
         IEnumerable<Permission> GetAll();
         Permission GetByName(string name);
         Permission GetById(long id);
-        void Add(Permission permission, string userName);
-        void Update(Permission permission, string userName);
-        void AddOrUpdateRange(List<Permission> permissions, string userName);
-        void DeleteById(long id, string userName);
+        Task Add(Permission permission);
+        Task Update(Permission permission);
+        Task AddOrUpdateRange(List<Permission> permissions);
+        void DeleteById(long id);
         List<Permission> GetPermissionsByProfileId(long profileId);
         Excel GetExcel();
         Excel GetExcelModel();
-        void RegisterByExcel(IFormFile file, string userName);
+        Task RegisterByExcel(IFormFile file);
     }
 }

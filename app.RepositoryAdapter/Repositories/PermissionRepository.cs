@@ -34,9 +34,10 @@ namespace app.RepositoryAdapter.Repositories
             return query.FirstOrDefault(x => x.Id == id);
         }
 
-        public void AddOrUpdateRange(List<Permission> permissions)
+        public async Task AddOrUpdateRange(List<Permission> permissions)
         {
             Repository.UpdateRange(permissions);
+            await SaveChangesAsync();
         }
 
         public void DeleteById(long id)
@@ -44,6 +45,7 @@ namespace app.RepositoryAdapter.Repositories
             var permission = Repository.AsNoTracking().AsQueryable().FirstOrDefault(x => x.Id == id);
 
             Repository.Remove(permission);
+            SaveChanges();
         }
 
         public List<Permission> GetPermissionsByProfileId(long profileId)
@@ -54,9 +56,10 @@ namespace app.RepositoryAdapter.Repositories
             return permissions;
         }
 
-        public void AddOrUpdatePermissionsToProfile(List<ProfilePermission> profilePermissions)
+        public async Task AddOrUpdatePermissionsToProfile(List<ProfilePermission> profilePermissions)
         {
             _context.Set<ProfilePermission>().UpdateRange(profilePermissions);
+            await SaveChangesAsync();
         }
 
         public void DeleteProfilePermissionsByProfileId(long profileId)
@@ -65,6 +68,7 @@ namespace app.RepositoryAdapter.Repositories
             var permissionsToDeleted = profilePermissions.Where(x => x.ProfileId == profileId).ToList();
 
             _context.Set<ProfilePermission>().RemoveRange(permissionsToDeleted);
+            SaveChanges();
         }
 
         public bool IsUsedInSomeProfile(long id)

@@ -30,10 +30,10 @@ namespace app.WebApi.Controllers
         [ProducesResponseType(typeof(BadRequestResult), 400)]
         [ProducesResponseType(500)]
         [Authorize(Roles = "POST_USER")]
-        public IActionResult Post([FromBody] UserPost userPost)
+        public async Task<IActionResult> Post([FromBody] UserPost userPost)
         {
             var user = _mapper.Map<User>(userPost);
-            _userService.Add(user, User.Identity.Name);
+            await _userService.Add(user);
 
             return Ok();
         }
@@ -47,10 +47,10 @@ namespace app.WebApi.Controllers
         [ProducesResponseType(typeof(BadRequestResult), 400)]
         [ProducesResponseType(500)]
         [Authorize(Roles = "PUT_USER")]
-        public IActionResult Edit([FromBody] UserPut userPut)
+        public async Task<IActionResult> Edit([FromBody] UserPut userPut)
         {
             var user = _mapper.Map<User>(userPut);
-            _userService.Update(user, User.Identity.Name);
+            await _userService.Update(user);
 
             return Ok();
         }
@@ -64,11 +64,11 @@ namespace app.WebApi.Controllers
         [ProducesResponseType(typeof(BadRequestResult), 400)]
         [ProducesResponseType(500)]
         [Authorize(Roles = "PUT_USER")]
-        public IActionResult EditUserPassword([FromBody] UserPasswordPut userPasswordPut)
+        public async Task<IActionResult> EditUserPassword([FromBody] UserPasswordPut userPasswordPut)
         {
             userPasswordPut.ThrowIfNotValid();
             var user = _mapper.Map<User>(userPasswordPut);
-            _userService.ChangePassword(user, User.Identity.Name);
+            await _userService.ChangePassword(user);
 
             return Ok();
         }
@@ -121,7 +121,7 @@ namespace app.WebApi.Controllers
         [Authorize(Roles = "DELETE_USER")]
         public IActionResult DeleteById([FromQuery] long id)
         {
-            _userService.DeleteById(id, User.Identity.Name);
+            _userService.DeleteById(id);
 
             return Ok();
         }

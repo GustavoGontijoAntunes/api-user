@@ -62,6 +62,7 @@ namespace app.RepositoryAdapter.Repositories
             var user = Repository.AsNoTracking().AsQueryable().FirstOrDefault(x => x.Id == id);
 
             Repository.Remove(user);
+            SaveChanges();
         }
     }
 }

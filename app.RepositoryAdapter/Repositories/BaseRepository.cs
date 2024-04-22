@@ -14,24 +14,26 @@ namespace app.RepositoryAdapter.Repositories
             Repository = context.Set<TEntity>();
         }
 
-        public bool SaveChanges(string? userName = null)
+        public bool SaveChanges()
         {
-            return _context.SaveChanges(userName) > 0;
+            return _context.SaveChanges() > 0;
         }
 
-        public async Task<bool> SaveChangesAsync(string? userId = null)
+        public async Task<bool> SaveChangesAsync()
         {
-            return (await _context.SaveChangesAsync(userId)) > 0;
+            return (await _context.SaveChangesAsync()) > 0;
         }
 
-        public void Add(TEntity entity)
+        public async Task Add(TEntity entity)
         {
             Repository.Add(entity);
+            await SaveChangesAsync();
         }
 
-        public void Update(TEntity entity)
+        public async Task Update(TEntity entity)
         {
             Repository.Update(entity);
+            await SaveChangesAsync();
         }
     }
 }
